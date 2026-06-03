@@ -53,13 +53,23 @@
     class="header-logo__image-container header-logo__image-container--original"
     data-testid="header-logo"
   >
-    {% render 'image',
-      image: settings.logo,
-      class: 'header-logo__image',
-      height: settings.logo_height,
-      text_fallback: shop.name,
-      style: logo_style
-    %}
+    {% if settings.logo != blank %}
+      {% render 'image',
+        image: settings.logo,
+        class: 'header-logo__image',
+        height: settings.logo_height,
+        text_fallback: shop.name,
+        style: logo_style
+      %}
+    {% else %}
+      <img
+        src="{{ 'rgc-logo.svg' | asset_url }}"
+        alt="{{ shop.name }}"
+        class="header-logo__image header-logo__image--svg"
+        height="{{ settings.logo_height }}"
+        loading="lazy"
+      >
+    {% endif %}
   </span>
 
   {% if use_inverse_logo %}
@@ -136,6 +146,14 @@
 
   .header-logo__image-container--inverse {
     display: var(--header-logo-inverse-display, none);
+  }
+
+  .header-logo__image--svg {
+    width: auto;
+    height: var(--header-logo-image-height-mobile, 36px);
+    @media screen and (min-width: 750px) {
+      height: var(--header-logo-image-height, 44px);
+    }
   }
 {% endstylesheet %}
 
