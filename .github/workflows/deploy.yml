@@ -15,15 +15,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: Install Shopify CLI
         run: npm install -g @shopify/cli @shopify/theme
 
       - name: Deploy theme to Shopify
+        env:
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
         run: |
           shopify theme push \
-            --store="${{ secrets.SHOPIFY_STORE }}" \
-            --password="${{ secrets.SHOPIFY_ACCESS_TOKEN }}" \
             --theme="158963761378" \
-            --allow-live
+            --allow-live \
+            --no-color
