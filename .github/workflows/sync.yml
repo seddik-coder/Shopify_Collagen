@@ -1,0 +1,48 @@
+name: Sync Horizon into repo (one-time)
+
+# Récupère le thème LIVE (Horizon) et remplace les fichiers du repo.
+# Commit avec [skip ci] pour ne pas déclencher d'autres workflows.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync.yml'
+
+concurrency:
+  group: sync-horizon
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Shopify CLI
+        run: npm install -g @shopify/cli @shopify/theme
+
+      - name: Pull live Horizon theme
+        env:
+          SHOPIFY_FLAG_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_CLI_THEME_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
+        run: |
+          rm -rf assets config layout locales sections snippets templates blocks
+          shopify theme pull --live --path . --no-color
+
+      - name: Commit Horizon theme
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "Sync: thème Horizon récupéré depuis Shopify [skip ci]" || echo "Aucun changement"
+          git push
