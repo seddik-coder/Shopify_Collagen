@@ -6,6 +6,7 @@
 
 {%- assign cdn = 'https://cdn.shopify.com/s/files/1/0782/4159/5618/files/' -%}
 {%- assign product_url = '/products/red-ginseng-collagen-jelly-gelee-a-la-grenade-ginseng-rouge' -%}
+{%- assign rgc_product = all_products['red-ginseng-collagen-jelly-gelee-a-la-grenade-ginseng-rouge'] -%}
 {%- assign img_hero = 'English_2.png' -%}
 {%- assign img_spoon = 'Gemini_Generated_Image__3_8cac6d72-9c14-49bb-b8e6-39c1ce31bcde.png' -%}
 {%- assign img_benefits = 'English.png' -%}
@@ -175,6 +176,37 @@
   .rgc-cta p { font-size: 0.85rem; color: rgba(250,247,242,0.7); margin-bottom: 2.5rem; }
   .rgc-cta small { display: block; font-size: 0.68rem; color: rgba(250,247,242,0.45); margin-top: 1.5rem; letter-spacing: 0.04em; }
 
+  /* ── VARIANT PICKER ── */
+  .rgc-variants { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+  .rgc-variant-btn {
+    padding: 0.65rem 1.4rem;
+    border: 1.5px solid var(--brun);
+    background: transparent;
+    color: var(--brun);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+    border-radius: 2px;
+  }
+  .rgc-variant-btn:hover,
+  .rgc-variant-btn.active {
+    background: var(--rouge);
+    border-color: var(--rouge);
+    color: var(--creme);
+  }
+  .rgc-price-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--rouge);
+    margin-bottom: 0.3rem;
+    line-height: 1;
+  }
+  .rgc-price-sub { font-size: 0.72rem; color: var(--gris); letter-spacing: 0.04em; margin-bottom: 1.6rem; }
+
   .rgc-fade { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
   .rgc-fade.in { opacity: 1; transform: none; }
 
@@ -212,7 +244,26 @@
     <div class="rgc-hero-cta">
       <div class="rgc-stars">★★★★★</div>
       <div class="rgc-note">200+ satisfied customers &nbsp;·&nbsp; Rated 4.9/5</div>
-      <a href="{{ product_url }}" class="rgc-btn rgc-btn--red">Shop Now →</a>
+
+      {%- if rgc_product != blank -%}
+        {%- assign first_variant = rgc_product.variants.first -%}
+        <div class="rgc-variants" id="rgc-variant-picker">
+          {%- for variant in rgc_product.variants -%}
+            <button
+              class="rgc-variant-btn{% if forloop.first %} active{% endif %}"
+              data-variant-id="{{ variant.id }}"
+              data-price="{{ variant.price | money_without_trailing_zeros }}"
+              data-url="{{ product_url }}?variant={{ variant.id }}"
+              type="button"
+            >{{ variant.title }}</button>
+          {%- endfor -%}
+        </div>
+        <div class="rgc-price-display" id="rgc-price">{{ first_variant.price | money_without_trailing_zeros }}</div>
+        <div class="rgc-price-sub" id="rgc-price-sub">{{ first_variant.title }}</div>
+        <a href="{{ product_url }}?variant={{ first_variant.id }}" class="rgc-btn rgc-btn--red" id="rgc-cta-btn">Shop Now →</a>
+      {%- else -%}
+        <a href="{{ product_url }}" class="rgc-btn rgc-btn--red">Shop Now →</a>
+      {%- endif -%}
     </div>
   </section>
 
@@ -364,6 +415,21 @@
   items.forEach(function (d) {
     d.addEventListener('toggle', function () {
       if (d.open) items.forEach(function (o) { if (o !== d) o.open = false; });
+    });
+  });
+
+  // Variant picker — update price and CTA link
+  var variantBtns = document.querySelectorAll('#rgc-variant-picker .rgc-variant-btn');
+  var priceEl = document.getElementById('rgc-price');
+  var priceSubEl = document.getElementById('rgc-price-sub');
+  var ctaBtn = document.getElementById('rgc-cta-btn');
+  variantBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      variantBtns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      if (priceEl) priceEl.textContent = btn.dataset.price;
+      if (priceSubEl) priceSubEl.textContent = btn.textContent.trim();
+      if (ctaBtn) ctaBtn.href = btn.dataset.url;
     });
   });
 })();
