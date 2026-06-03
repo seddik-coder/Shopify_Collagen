@@ -6,6 +6,9 @@
 
 {%- assign cdn = 'https://cdn.shopify.com/s/files/1/0782/4159/5618/files/' -%}
 {%- assign product_url = '/products/red-ginseng-collagen-jelly-gelee-a-la-grenade-ginseng-rouge' -%}
+{%- assign img_hero = 'watermarked_img_3200721009659840761-clean_f43fe0d4-d095-4427-9eca-d1be9a367efd.png' -%}
+{%- assign img_spoon = 'Gemini_Generated_Image__3_8cac6d72-9c14-49bb-b8e6-39c1ce31bcde.png' -%}
+{%- assign img_benefits = 'Gemini_Generated_Image_55bd2355bd2355bd-clean.png' -%}
 
 <style>
   .rgc * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -214,14 +217,13 @@
   {%- comment -%} HERO — image "Énergie & Beauté" affichée nette {%- endcomment -%}
   <section class="rgc-hero rgc-bleed">
     <img
-      src="{{ cdn }}homepage3.jpg?width=2000"
-      srcset="{{ cdn }}homepage3.jpg?width=750 750w,
-              {{ cdn }}homepage3.jpg?width=1100 1100w,
-              {{ cdn }}homepage3.jpg?width=1600 1600w,
-              {{ cdn }}homepage3.jpg?width=2000 2000w"
+      src="{{ cdn }}{{ img_hero }}?width=1600"
+      srcset="{{ cdn }}{{ img_hero }}?width=750 750w,
+              {{ cdn }}{{ img_hero }}?width=1100 1100w,
+              {{ cdn }}{{ img_hero }}?width=1584 1584w"
       sizes="100vw"
       alt="Red Ginseng Collagen Jelly — Énergie & Beauté au Quotidien"
-      width="2000" height="930"
+      width="1584" height="672"
       loading="eager" fetchpriority="high"
     >
     <div class="rgc-hero-cta">
@@ -244,11 +246,11 @@
   <section class="rgc-split rgc-bleed">
     <div class="rgc-split-img">
       <img
-        src="{{ cdn }}homepage1.jpg?width=900"
-        srcset="{{ cdn }}homepage1.jpg?width=600 600w, {{ cdn }}homepage1.jpg?width=900 900w"
+        src="{{ cdn }}{{ img_spoon }}?width=1000"
+        srcset="{{ cdn }}{{ img_spoon }}?width=600 600w, {{ cdn }}{{ img_spoon }}?width=1023 1023w"
         sizes="(max-width: 989px) 100vw, 50vw"
         alt="Texture gelée Red Ginseng Collagen sur une cuillère"
-        width="900" height="900" loading="lazy"
+        width="1023" height="936" loading="lazy"
       >
     </div>
     <div class="rgc-split-text rgc-fade">
@@ -267,14 +269,14 @@
   {%- comment -%} BÉNÉFICES — infographie "Votre éclat au quotidien" nette {%- endcomment -%}
   <section class="rgc-banner rgc-bleed">
     <img
-      src="{{ cdn }}homepage2.jpg?width=2000"
-      srcset="{{ cdn }}homepage2.jpg?width=750 750w,
-              {{ cdn }}homepage2.jpg?width=1100 1100w,
-              {{ cdn }}homepage2.jpg?width=1600 1600w,
-              {{ cdn }}homepage2.jpg?width=2000 2000w"
+      src="{{ cdn }}{{ img_benefits }}?width=2000"
+      srcset="{{ cdn }}{{ img_benefits }}?width=750 750w,
+              {{ cdn }}{{ img_benefits }}?width=1100 1100w,
+              {{ cdn }}{{ img_benefits }}?width=1600 1600w,
+              {{ cdn }}{{ img_benefits }}?width=2400 2400w"
       sizes="100vw"
       alt="Les 6 bienfaits — Éclat, Énergie, Immunité, Défense, Collagène, Régénération"
-      width="2000" height="800" loading="lazy"
+      width="3168" height="1344" loading="lazy"
     >
   </section>
 
