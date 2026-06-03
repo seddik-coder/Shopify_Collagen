@@ -1,0 +1,637 @@
+{% comment %} Red Ginseng Collagen — Landing Page {% endcomment %}
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap');
+
+  .rgc-wrap * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .rgc-wrap {
+    --rouge: #8B1C1C;
+    --creme: #FAF7F2;
+    --brun: #3D2010;
+    --or: #C9943A;
+    --gris: #8A8580;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--creme);
+    color: var(--brun);
+    overflow-x: hidden;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+  /* ── HERO ── */
+  .rgc-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 92vh;
+  }
+
+  .rgc-hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3.5rem;
+  }
+
+  .rgc-kicker {
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .rgc-kicker::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--or);
+  }
+
+  .rgc-hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.08;
+    color: var(--brun);
+    margin-bottom: 1.8rem;
+    letter-spacing: -0.01em;
+  }
+
+  .rgc-hero-title em {
+    font-style: italic;
+    color: var(--rouge);
+  }
+
+  .rgc-hero-desc {
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: var(--brun);
+    opacity: 0.65;
+    max-width: 380px;
+    margin-bottom: 2.5rem;
+  }
+
+  .rgc-btn-primary {
+    display: inline-block;
+    background: var(--rouge);
+    color: #FAF7F2 !important;
+    border: none;
+    padding: 1rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+  }
+
+  .rgc-btn-primary:hover {
+    background: var(--brun);
+    transform: translateY(-1px);
+    color: #FAF7F2 !important;
+  }
+
+  .rgc-price-badge {
+    margin-top: 3rem;
+    display: inline-flex;
+    flex-direction: column;
+    border-left: 2px solid var(--rouge);
+    padding-left: 1rem;
+  }
+
+  .rgc-price-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--rouge);
+    line-height: 1;
+  }
+
+  .rgc-price-sub {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-top: 0.3rem;
+  }
+
+  .rgc-hero-right {
+    position: relative;
+    overflow: hidden;
+    background: #EDE0D4;
+    min-height: 500px;
+  }
+
+  .rgc-hero-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .rgc-hero-right:hover img { transform: scale(1.02); }
+
+  .rgc-img-tag {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    background: rgba(250,247,242,0.95);
+    padding: 0.8rem 1.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brun);
+  }
+
+  /* ── SECTION LABEL ── */
+  .rgc-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .rgc-label::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--or);
+  }
+
+  /* ── BÉNÉFICES ── */
+  .rgc-benefits {
+    padding: 6rem 3.5rem;
+    background: var(--brun);
+    color: #FAF7F2;
+  }
+
+  .rgc-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 0.5px solid rgba(250,247,242,0.1);
+  }
+
+  .rgc-benefit {
+    padding: 2.5rem 2rem;
+    border-right: 0.5px solid rgba(250,247,242,0.1);
+    border-bottom: 0.5px solid rgba(250,247,242,0.1);
+    transition: background 0.25s;
+  }
+
+  .rgc-benefit:hover { background: rgba(250,247,242,0.04); }
+
+  .rgc-benefit-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: rgba(201,148,58,0.25);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .rgc-benefit-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    color: #FAF7F2;
+    margin-bottom: 0.75rem;
+  }
+
+  .rgc-benefit-desc {
+    font-size: 0.8rem;
+    line-height: 1.75;
+    color: rgba(250,247,242,0.5);
+  }
+
+  /* ── BANNIÈRE ── */
+  .rgc-banner {
+    position: relative;
+    height: 520px;
+    overflow: hidden;
+  }
+
+  .rgc-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .rgc-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(61,32,16,0.78) 0%, transparent 62%);
+    display: flex;
+    align-items: center;
+    padding: 4rem 3.5rem;
+  }
+
+  .rgc-banner-overlay.right {
+    background: linear-gradient(to left, rgba(61,32,16,0.78) 0%, transparent 55%);
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  .rgc-banner-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: #FAF7F2;
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+
+  .rgc-banner-title em { font-style: italic; color: var(--or); }
+
+  .rgc-banner-text {
+    font-size: 0.85rem;
+    line-height: 1.8;
+    color: rgba(250,247,242,0.72);
+    margin-bottom: 2rem;
+    max-width: 420px;
+  }
+
+  .rgc-btn-light {
+    display: inline-block;
+    background: #FAF7F2;
+    color: var(--brun) !important;
+    border: none;
+    padding: 1rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .rgc-btn-light:hover {
+    background: var(--brun);
+    color: #FAF7F2 !important;
+  }
+
+  /* ── INGRÉDIENTS ── */
+  .rgc-ingredients {
+    padding: 6rem 3.5rem;
+    background: #F5EDE3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .rgc-ing-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--brun);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .rgc-ing-desc {
+    font-size: 0.87rem;
+    line-height: 1.9;
+    color: var(--brun);
+    opacity: 0.6;
+    margin-bottom: 2.5rem;
+  }
+
+  .rgc-ing-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .rgc-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border: 0.5px solid rgba(61,32,16,0.25);
+    color: var(--brun);
+    opacity: 0.75;
+  }
+
+  .rgc-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(61,32,16,0.08);
+  }
+
+  .rgc-stat {
+    background: #F5EDE3;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .rgc-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--rouge);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .rgc-stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gris);
+  }
+
+  /* ── TÉMOIGNAGE ── */
+  .rgc-testimonial {
+    padding: 6rem 3.5rem;
+    background: var(--creme);
+    text-align: center;
+  }
+
+  .rgc-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--brun);
+    max-width: 700px;
+    margin: 2rem auto;
+    line-height: 1.5;
+  }
+
+  .rgc-author {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-top: 1.5rem;
+  }
+
+  .rgc-stars {
+    color: var(--or);
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    margin-top: 0.75rem;
+  }
+
+  /* ── CTA FINAL ── */
+  .rgc-cta {
+    padding: 6rem 3.5rem;
+    background: var(--rouge);
+    text-align: center;
+  }
+
+  .rgc-cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: #FAF7F2;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .rgc-cta-sub {
+    font-size: 0.85rem;
+    color: rgba(250,247,242,0.65);
+    margin-bottom: 2.5rem;
+  }
+
+  .rgc-btn-cta {
+    display: inline-block;
+    background: #FAF7F2;
+    color: var(--rouge) !important;
+    border: none;
+    padding: 1.1rem 3rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: all 0.25s;
+  }
+
+  .rgc-btn-cta:hover {
+    background: var(--brun);
+    color: #FAF7F2 !important;
+  }
+
+  /* ── ANIMATIONS ── */
+  .rgc-anim {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+
+  .rgc-anim.on {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .rgc-hero { grid-template-columns: 1fr; }
+    .rgc-hero-right { min-height: 300px; order: -1; }
+    .rgc-hero-left { padding: 3rem 1.5rem; }
+    .rgc-benefits { padding: 4rem 1.5rem; }
+    .rgc-benefits-grid { grid-template-columns: 1fr; }
+    .rgc-banner { height: 380px; }
+    .rgc-banner-title { font-size: 2rem; }
+    .rgc-ingredients { grid-template-columns: 1fr; gap: 2rem; padding: 4rem 1.5rem; }
+    .rgc-testimonial { padding: 4rem 1.5rem; }
+    .rgc-quote { font-size: 1.4rem; }
+    .rgc-cta { padding: 4rem 1.5rem; }
+    .rgc-cta-title { font-size: 2rem; }
+  }
+</style>
+
+<div class="rgc-wrap">
+
+  {%- comment -%} HERO {%- endcomment -%}
+  <section class="rgc-hero">
+    <div class="rgc-hero-left">
+      <div class="rgc-kicker">Corée · Beauté &amp; Bien-être</div>
+      <h1 class="rgc-hero-title">
+        Votre éclat,<br>
+        <em>au naturel</em>
+      </h1>
+      <p class="rgc-hero-desc">
+        La gelée au Ginseng Rouge &amp; Collagène — une alliance millénaire de grenade et ginseng pour révéler votre beauté intérieure, chaque jour.
+      </p>
+      <a href="/products/red-ginseng-collagen-jelly-gelee-a-la-grenade-ginseng-rouge" class="rgc-btn-primary">
+        Découvrir la gelée →
+      </a>
+      <div class="rgc-price-badge">
+        <span class="rgc-price-tag">Soin quotidien</span>
+        <span class="rgc-price-sub">30 sticks · 1 mois</span>
+      </div>
+    </div>
+    <div class="rgc-hero-right">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/watermarked_img_3200721009659840761-clean_f43fe0d4-d095-4427-9eca-d1be9a367efd.png"
+        alt="Red Ginseng Collagen Jelly — boîte et sticks à la grenade"
+        loading="eager"
+      />
+      <div class="rgc-img-tag">Grenade · Ginseng Rouge · Collagène</div>
+    </div>
+  </section>
+
+  {%- comment -%} BÉNÉFICES {%- endcomment -%}
+  <section class="rgc-benefits rgc-anim">
+    <div class="rgc-label" style="color: var(--or);">Les bienfaits</div>
+    <div class="rgc-benefits-grid">
+      <div class="rgc-benefit">
+        <div class="rgc-benefit-num">01</div>
+        <div class="rgc-benefit-title">Éclat &amp; Fermeté</div>
+        <div class="rgc-benefit-desc">Le collagène marin stimule la régénération cutanée et redonne au teint une luminosité naturelle visible dès les premières semaines.</div>
+      </div>
+      <div class="rgc-benefit">
+        <div class="rgc-benefit-num">02</div>
+        <div class="rgc-benefit-title">Énergie Pure</div>
+        <div class="rgc-benefit-desc">Le ginseng rouge de Corée, adaptogène millénaire, revitalise l'organisme et combat la fatigue en profondeur sans effet de pic.</div>
+      </div>
+      <div class="rgc-benefit">
+        <div class="rgc-benefit-num">03</div>
+        <div class="rgc-benefit-title">Immunité Forte</div>
+        <div class="rgc-benefit-desc">Les ginsénosides du ginseng rouge renforcent les défenses naturelles et soutiennent le système immunitaire toute l'année.</div>
+      </div>
+      <div class="rgc-benefit">
+        <div class="rgc-benefit-num">04</div>
+        <div class="rgc-benefit-title">Défense Naturelle</div>
+        <div class="rgc-benefit-desc">Riche en antioxydants puissants, la grenade neutralise les radicaux libres et protège les cellules du vieillissement prématuré.</div>
+      </div>
+      <div class="rgc-benefit">
+        <div class="rgc-benefit-num">05</div>
+        <div class="rgc-benefit-title">Action Collagène</div>
+        <div class="rgc-benefit-desc">Formule optimisée pour une absorption maximale des peptides de collagène, directement assimilés en format jelly.</div>
+      </div>
+      <div class="rgc-benefit">
+        <div class="rgc-benefit-num">06</div>
+        <div class="rgc-benefit-title">Régénération</div>
+        <div class="rgc-benefit-desc">La synergie des 3 actifs accélère la récupération cellulaire et soutient les fonctions vitales au quotidien.</div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} BANNIÈRE 1 — stick sur cuillère {%- endcomment -%}
+  <section class="rgc-banner rgc-anim">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/Gemini_Generated_Image___3_.png"
+      alt="Texture gélée Red Ginseng Collagen sur une cuillère"
+      loading="lazy"
+    />
+    <div class="rgc-banner-overlay">
+      <div>
+        <div class="rgc-label">Rituel quotidien</div>
+        <h2 class="rgc-banner-title">Un stick.<br><em>Une transformation.</em></h2>
+        <p class="rgc-banner-text">Un seul stick par jour suffit. La texture jelly fondante se consomme directement ou diluée dans un verre d'eau — un rituel beauté aussi simple qu'efficace.</p>
+        <a href="/products/red-ginseng-collagen-jelly-gelee-a-la-grenade-ginseng-rouge" class="rgc-btn-light">Voir le produit →</a>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} INGRÉDIENTS {%- endcomment -%}
+  <section class="rgc-ingredients rgc-anim">
+    <div>
+      <div class="rgc-label">Ingrédients clés</div>
+      <h2 class="rgc-ing-title">La puissance<br>de la nature,<br>concentrée</h2>
+      <p class="rgc-ing-desc">Chaque stick contient une dose précise de ginseng rouge 6 ans, de collagène marin hydrolysé et d'extrait de grenade biologique — des ingrédients sélectionnés pour leur pureté et leur efficacité prouvée.</p>
+      <div class="rgc-ing-tags">
+        <span class="rgc-tag">Ginseng Rouge 6 ans</span>
+        <span class="rgc-tag">Collagène Marin</span>
+        <span class="rgc-tag">Grenade Bio</span>
+        <span class="rgc-tag">Sans sucre ajouté</span>
+        <span class="rgc-tag">Sans conservateurs</span>
+        <span class="rgc-tag">Korea Quality</span>
+      </div>
+    </div>
+    <div class="rgc-stats">
+      <div class="rgc-stat">
+        <span class="rgc-stat-num">6</span>
+        <span class="rgc-stat-label">Ans de culture ginseng</span>
+      </div>
+      <div class="rgc-stat">
+        <span class="rgc-stat-num">3</span>
+        <span class="rgc-stat-label">Actifs synergiques</span>
+      </div>
+      <div class="rgc-stat">
+        <span class="rgc-stat-num">30</span>
+        <span class="rgc-stat-label">Sticks par boîte</span>
+      </div>
+      <div class="rgc-stat">
+        <span class="rgc-stat-num">20g</span>
+        <span class="rgc-stat-label">Par stick dosé</span>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} BANNIÈRE 2 — bénéfices {%- endcomment -%}
+  <section class="rgc-banner rgc-anim" style="height: 480px;">
+    <img
+      src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/Gemini_Generated_Image_55bd2355bd2355bd-clean.png"
+      alt="Votre éclat au quotidien — Red Ginseng Collagen"
+      loading="lazy"
+    />
+    <div class="rgc-banner-overlay right">
+      <div>
+        <div class="rgc-label" style="justify-content: flex-end;">Votre éclat au quotidien</div>
+        <h2 class="rgc-banner-title" style="font-size: 2.4rem;">Beauté &amp; Énergie<br><em>réunies en un geste</em></h2>
+        <p class="rgc-banner-text" style="margin-left: auto;">Éclat, fermeté, immunité, régénération — tout ce dont votre corps a besoin, dans un format ultra-pratique et délicieusement fruité.</p>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} TÉMOIGNAGE {%- endcomment -%}
+  <section class="rgc-testimonial rgc-anim">
+    <div class="rgc-label" style="justify-content: center;">Témoignages</div>
+    <p class="rgc-quote">"En 3 semaines, ma peau est plus ferme et j'ai retrouvé une énergie que je n'avais plus depuis des années. Le goût grenade est absolument délicieux."</p>
+    <div class="rgc-author">Nadia K. — Dubai · Cliente vérifiée</div>
+    <div class="rgc-stars">★★★★★</div>
+  </section>
+
+  {%- comment -%} CTA FINAL {%- endcomment -%}
+  <section class="rgc-cta rgc-anim">
+    <div class="rgc-label" style="justify-content: center; color: rgba(250,247,242,0.45);">Commencer dès aujourd'hui</div>
+    <h2 class="rgc-cta-title">Révélez votre éclat<br>naturel</h2>
+    <p class="rgc-cta-sub">Livraison aux Émirats Arabes Unis · Qualité certifiée Corée</p>
+    <a href="/products/red-ginseng-collagen-jelly-gelee-a-la-grenade-ginseng-rouge" class="rgc-btn-cta">
+      Commander ma boîte
+    </a>
+  </section>
+
+</div>
+
+<script>
+  (function() {
+    var elems = document.querySelectorAll('.rgc-anim');
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('on');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    elems.forEach(function(el) { io.observe(el); });
+  })();
+</script>
