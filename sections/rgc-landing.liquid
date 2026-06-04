@@ -258,8 +258,6 @@
             >{{ variant.title }}</button>
           {%- endfor -%}
         </div>
-        <div class="rgc-price-display" id="rgc-price">{{ first_variant.price | money_without_trailing_zeros }}</div>
-        <div class="rgc-price-sub" id="rgc-price-sub">{{ first_variant.title }}</div>
         <a href="{{ product_url }}?variant={{ first_variant.id }}" class="rgc-btn rgc-btn--red" id="rgc-cta-btn">Shop Now →</a>
       {%- else -%}
         <a href="{{ product_url }}" class="rgc-btn rgc-btn--red">Shop Now →</a>
