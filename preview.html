@@ -126,27 +126,10 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   text-align: center;
-  padding: 2rem;
-  background: rgba(44,26,14,0.28);
-}
-.hero-brand-overlay .eyebrow { color: rgba(250,247,242,0.7); margin-bottom: 0.8rem; }
-.hero-brand-overlay h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(2.6rem, 5vw, 4.5rem);
-  color: var(--creme);
-  line-height: 1.1;
-  margin-bottom: 1rem;
-}
-.hero-brand-overlay h1 em { font-style: italic; color: var(--or); }
-.hero-brand-overlay p {
-  font-size: 0.9rem;
-  color: rgba(250,247,242,0.8);
-  max-width: 480px;
-  margin-bottom: 2rem;
-  line-height: 1.7;
+  padding: 2.5rem;
+  background: linear-gradient(to top, rgba(44,26,14,0.45) 0%, transparent 45%);
 }
 .hero-scroll-cta {
   display: inline-flex;
@@ -156,7 +139,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--creme);
-  border-bottom: 1px solid rgba(250,247,242,0.4);
+  border-bottom: 1px solid rgba(250,247,242,0.5);
   padding-bottom: 0.2rem;
   text-decoration: none;
   cursor: pointer;
@@ -419,7 +402,6 @@ section { padding: 6rem 8vw; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 989px) {
-  .hero-brand-overlay h1 { font-size: 2.4rem; }
   .split { grid-template-columns: 1fr; }
   .split-img { min-height: 300px; }
   .ingredients { grid-template-columns: 1fr; gap: 3rem; }
@@ -435,7 +417,6 @@ section { padding: 6rem 8vw; }
   .split-text { padding: 3rem 6vw; }
   .benefits-grid { grid-template-columns: 1fr; }
   .guarantee-badge { padding: 2rem 1.5rem; }
-  .hero-brand-overlay h1 { font-size: 2rem; }
   .order-content { padding: 3rem 6vw; }
 }
 </style>
@@ -473,9 +454,6 @@ section { padding: 6rem 8vw; }
 <div class="hero-brand">
   <img src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/English_2.png?width=1600" alt="Red Ginseng Collagen Jelly">
   <div class="hero-brand-overlay">
-    <div class="eyebrow">Korean Beauty Ritual</div>
-    <h1 class="serif">Your daily glow,<br><em>from within</em></h1>
-    <p>Pomegranate · Red Ginseng · Marine Collagen<br>30 sticks · 1 stick a day · Feel the difference</p>
     <a href="#benefits" class="hero-scroll-cta">Discover the ritual ↓</a>
   </div>
 </div>
