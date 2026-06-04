@@ -245,23 +245,7 @@
       <div class="rgc-stars">★★★★★</div>
       <div class="rgc-note">200+ satisfied customers &nbsp;·&nbsp; Rated 4.9/5</div>
 
-      {%- if rgc_product != blank -%}
-        {%- assign first_variant = rgc_product.variants.first -%}
-        <div class="rgc-variants" id="rgc-variant-picker">
-          {%- for variant in rgc_product.variants -%}
-            <button
-              class="rgc-variant-btn{% if forloop.first %} active{% endif %}"
-              data-variant-id="{{ variant.id }}"
-              data-price="{{ variant.price | money_without_trailing_zeros }}"
-              data-url="{{ product_url }}?variant={{ variant.id }}"
-              type="button"
-            >{{ variant.title }}</button>
-          {%- endfor -%}
-        </div>
-        <a href="{{ product_url }}?variant={{ first_variant.id }}" class="rgc-btn rgc-btn--red" id="rgc-cta-btn">Shop Now →</a>
-      {%- else -%}
-        <a href="{{ product_url }}" class="rgc-btn rgc-btn--red">Shop Now →</a>
-      {%- endif -%}
+      <a href="{{ product_url }}" class="rgc-btn rgc-btn--red">Shop Now →</a>
     </div>
   </section>
 
