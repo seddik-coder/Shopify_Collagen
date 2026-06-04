@@ -164,7 +164,7 @@ img { display: block; max-width: 100%; }
 }
 
 /* ── SECTIONS ── */
-section { padding: 6rem 8vw; }
+section { padding: 5rem 8vw; }
 
 /* ── BENEFITS ── */
 .section-header {
@@ -199,24 +199,24 @@ section { padding: 6rem 8vw; }
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: stretch;
 }
-.split-img { overflow: hidden; min-height: 480px; }
-.split-img img { width: 100%; height: 100%; object-fit: cover; }
-.split-text { padding: 4rem 6vw; }
-.split-text h2 { font-size: clamp(2rem,2.8vw,2.6rem); line-height: 1.15; margin-bottom: 1.2rem; }
+.split-img { overflow: hidden; min-height: 420px; }
+.split-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.split-text { padding: 4rem 5vw; display: flex; flex-direction: column; justify-content: center; }
+.split-text h2 { font-size: clamp(1.8rem,2.5vw,2.4rem); line-height: 1.15; margin-bottom: 1rem; }
 .split-text h2 em { font-style: italic; color: var(--rouge); }
-.split-text > p { font-size: 0.88rem; opacity: 0.65; margin-bottom: 2rem; max-width: 400px; line-height: 1.8; }
-.steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.2rem; }
+.split-text > p { font-size: 0.86rem; opacity: 0.65; margin-bottom: 1.8rem; max-width: 380px; line-height: 1.8; }
+.steps { display: flex; flex-direction: column; gap: 0.9rem; }
 .step { display: flex; gap: 1rem; align-items: flex-start; }
 .step-num {
-  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
   background: var(--rouge); color: white;
   display: flex; align-items: center; justify-content: center;
-  font-size: 0.7rem; font-weight: 600;
+  font-size: 0.68rem; font-weight: 600;
 }
 .step-body strong { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 0.1rem; }
-.step-body span { font-size: 0.76rem; opacity: 0.6; }
+.step-body span { font-size: 0.75rem; opacity: 0.6; }
 
 /* ── INGREDIENTS ── */
 .ingredients {
@@ -291,19 +291,21 @@ section { padding: 6rem 8vw; }
   background: #F2EDE5;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: stretch;
   gap: 0;
 }
-.order-img { overflow: hidden; min-height: 540px; }
-.order-img img { width: 100%; height: 100%; object-fit: cover; }
+.order-img { overflow: hidden; min-height: 420px; }
+.order-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .order-content {
-  padding: 4.5rem 5vw;
+  padding: 4rem 4vw 4rem 4vw;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  max-width: 520px;
 }
-.order-content h2 { font-size: clamp(1.8rem,2.5vw,2.4rem); line-height: 1.15; margin-bottom: 0.4rem; }
+.order-content h2 { font-size: clamp(1.7rem,2.2vw,2.2rem); line-height: 1.15; margin-bottom: 0.3rem; }
 .order-content h2 em { font-style: italic; color: var(--rouge); }
-.order-tagline { font-size: 0.82rem; opacity: 0.6; margin-bottom: 2rem; }
+.order-tagline { font-size: 0.8rem; opacity: 0.6; margin-bottom: 1.6rem; }
 
 .variant-label {
   font-size: 0.66rem;
@@ -312,12 +314,12 @@ section { padding: 6rem 8vw; }
   color: var(--gris);
   margin-bottom: 0.7rem;
 }
-.variants { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+.variants { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.4rem; }
 .variant-btn {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.85rem 1.2rem;
+  padding: 0.75rem 1rem;
   border: 1.5px solid var(--line);
   background: white;
   cursor: pointer;
@@ -402,35 +404,30 @@ section { padding: 6rem 8vw; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 989px) {
-  .hero-brand img { min-height: 320px; object-fit: cover; }
   .split { grid-template-columns: 1fr; }
-  .split-img { min-height: 260px; }
-  .ingredients { grid-template-columns: 1fr; gap: 3rem; }
+  .split-img { min-height: 280px; }
+  .split-text { padding: 3rem 5vw; }
+  .ingredients { grid-template-columns: 1fr; gap: 2.5rem; }
   .benefits-grid { grid-template-columns: 1fr 1fr; }
   .testi-grid { grid-template-columns: 1fr; }
   .order-section { grid-template-columns: 1fr; }
-  .order-img { min-height: 260px; }
+  .order-img { min-height: 280px; max-height: 340px; }
+  .order-content { max-width: 100%; padding: 3rem 5vw; }
   section { padding: 4rem 5vw; }
   .sticky-bar { display: flex; }
   .guarantee-faq-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
 }
 @media (max-width: 749px) {
-  .announce { font-size: 0.58rem; letter-spacing: 0.1em; padding: 0.6rem 1rem; }
-  .site-logo { font-size: 0.95rem; }
-  .trust-bar { gap: 0.8rem 1.4rem; padding: 1rem 5vw; }
-  .trust-bar span { font-size: 0.6rem; }
-  .split-text { padding: 2.5rem 5vw; }
-  .split-text h2 { font-size: 1.8rem; }
+  .announce { font-size: 0.56rem; letter-spacing: 0.08em; padding: 0.6rem 1rem; }
+  .site-logo { font-size: 0.9rem; }
+  .trust-bar { gap: 0.7rem 1.2rem; padding: 1rem 5vw; }
+  .trust-bar span { font-size: 0.58rem; }
   .benefits-grid { grid-template-columns: 1fr; }
-  .benefit-card { padding: 1.8rem 1.2rem; }
+  .benefit-card { padding: 1.5rem 1.2rem; }
   .guarantee-badge { padding: 2rem 1.2rem; }
-  .order-content { padding: 2.5rem 5vw; }
-  .order-content h2 { font-size: 1.8rem; }
-  .section-header h2 { font-size: 1.8rem; }
-  .ingredients h2 { font-size: 1.8rem; }
-  .testi h2 { font-size: 1.8rem; }
-  .faq h2 { font-size: 1.8rem; }
-  section { padding: 3.5rem 5vw; }
+  .section-header h2, .split-text h2, .order-content h2,
+  .ingredients h2, .testi h2, .faq h2 { font-size: 1.7rem; }
+  section { padding: 3rem 5vw; }
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .ticker-inner { animation-duration: 30s; }
 }
@@ -558,8 +555,8 @@ section { padding: 6rem 8vw; }
   </div>
 </div>
 
-<!-- 8. PRODUCT / ORDER (juste après Daily Ritual) -->
-<div id="order" class="order-section">
+<!-- 8. PRODUCT / ORDER (juste après Daily Ritual, zéro gap) -->
+<div id="order" class="order-section" style="margin-top:0;">
   <div class="order-img">
     <img src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/English_2.png?width=900" alt="Red Ginseng Collagen Jelly">
   </div>
