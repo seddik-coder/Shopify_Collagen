@@ -69,27 +69,19 @@ img { display: block; max-width: 100%; }
   color: var(--brun);
   text-decoration: none;
 }
-.header-cart {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--brun);
-  text-decoration: none;
-  cursor: pointer;
-}
-.cart-icon { font-size: 1.1rem; }
-.cart-count {
+.header-cta {
+  display: inline-block;
+  padding: 0.55rem 1.4rem;
   background: var(--rouge);
-  color: white;
-  border-radius: 50%;
-  width: 18px; height: 18px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.62rem;
-  font-weight: 600;
+  color: var(--creme);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .2s;
 }
+.header-cta:hover { background: var(--brun); }
 
 /* ── SOCIAL PROOF TICKER ── */
 .ticker {
@@ -101,7 +93,7 @@ img { display: block; max-width: 100%; }
 .ticker-inner {
   display: flex;
   gap: 4rem;
-  animation: ticker 18s linear infinite;
+  animation: ticker 22s linear infinite;
   white-space: nowrap;
   width: max-content;
 }
@@ -117,145 +109,57 @@ img { display: block; max-width: 100%; }
   100% { transform: translateX(-50%); }
 }
 
-/* ── HERO PRODUCT ── */
-.hero-product {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 580px;
-}
-.hero-img {
-  background: #EDE8E0;
-  overflow: hidden;
+/* ── HERO BRAND ── */
+.hero-brand {
   position: relative;
+  overflow: hidden;
+  background: #EDE8E0;
 }
-.hero-img img {
+.hero-brand img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
 }
-.hero-badge {
+.hero-brand-overlay {
   position: absolute;
-  top: 1.5rem; left: 1.5rem;
-  background: var(--rouge);
-  color: white;
-  font-size: 0.6rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 0.4rem 0.9rem;
-  font-weight: 500;
-}
-.hero-content {
-  padding: 3.5rem 4vw 3.5rem;
+  inset: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background: var(--creme);
-}
-.hero-rating {
-  display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1.2rem;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: rgba(44,26,14,0.28);
 }
-.stars { color: var(--or); font-size: 0.85rem; letter-spacing: 0.1em; }
-.rating-text { font-size: 0.72rem; color: var(--gris); }
-.hero-content h1 {
-  font-size: clamp(1.7rem, 2.5vw, 2.4rem);
-  line-height: 1.15;
+.hero-brand-overlay .eyebrow { color: rgba(250,247,242,0.7); margin-bottom: 0.8rem; }
+.hero-brand-overlay h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  color: var(--creme);
+  line-height: 1.1;
   margin-bottom: 1rem;
 }
-.hero-content h1 em { font-style: italic; color: var(--rouge); }
-.hero-tagline {
-  font-size: 0.88rem;
-  color: var(--brun);
-  opacity: 0.65;
+.hero-brand-overlay h1 em { font-style: italic; color: var(--or); }
+.hero-brand-overlay p {
+  font-size: 0.9rem;
+  color: rgba(250,247,242,0.8);
+  max-width: 480px;
   margin-bottom: 2rem;
-  max-width: 380px;
   line-height: 1.7;
 }
-
-/* Variant picker */
-.variant-label {
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gris);
-  margin-bottom: 0.7rem;
-}
-.variants {
-  display: flex;
-  flex-direction: column;
+.hero-scroll-cta {
+  display: inline-flex;
+  align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-.variant-btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.85rem 1.2rem;
-  border: 1.5px solid var(--line);
-  background: transparent;
-  cursor: pointer;
-  transition: border-color .2s, background .2s;
-  text-align: left;
-  width: 100%;
-}
-.variant-btn.active {
-  border-color: var(--rouge);
-  background: rgba(139,28,28,0.04);
-}
-.variant-btn:hover { border-color: var(--rouge); }
-.variant-name { font-size: 0.8rem; font-weight: 500; color: var(--brun); }
-.variant-price { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--rouge); }
-.variant-badge {
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  background: var(--or);
-  color: white;
-  padding: 0.2rem 0.6rem;
-  margin-left: 0.5rem;
-}
-.variant-per {
-  font-size: 0.64rem;
-  color: var(--gris);
-  margin-top: 0.15rem;
-}
-
-/* CTA button */
-.btn-primary {
-  display: block;
-  width: 100%;
-  padding: 1.1rem;
-  background: var(--rouge);
   color: var(--creme);
-  text-align: center;
-  font-size: 0.78rem;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  border-bottom: 1px solid rgba(250,247,242,0.4);
+  padding-bottom: 0.2rem;
   text-decoration: none;
-  border: none;
   cursor: pointer;
-  transition: background .25s, transform .2s;
-  margin-bottom: 0.9rem;
-}
-.btn-primary:hover { background: var(--brun); transform: translateY(-1px); }
-
-/* Trust mini */
-.hero-trust {
-  display: flex;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-}
-.hero-trust span {
-  font-size: 0.64rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--gris);
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
 }
 
 /* ── TRUST BAR ── */
@@ -280,48 +184,46 @@ img { display: block; max-width: 100%; }
 section { padding: 6rem 8vw; }
 
 /* ── BENEFITS ── */
+.section-header {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 3.5rem;
+}
+.section-header h2 { font-size: clamp(2rem,3vw,2.6rem); line-height: 1.15; }
+.section-header h2 em { font-style: italic; color: var(--rouge); }
+.section-header p { font-size: 0.88rem; opacity: 0.6; margin-top: 0.8rem; line-height: 1.7; }
+
 .benefits-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
   background: var(--line);
-  margin-top: 3rem;
 }
 .benefit-card {
   background: var(--creme);
   padding: 2.5rem 2rem;
   text-align: center;
 }
-.benefit-icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  display: block;
-}
+.benefit-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
 .benefit-card h3 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
 }
-.benefit-card p {
-  font-size: 0.78rem;
-  color: var(--brun);
-  opacity: 0.65;
-  line-height: 1.7;
-}
+.benefit-card p { font-size: 0.78rem; opacity: 0.65; line-height: 1.7; }
 
 /* ── SPLIT RITUAL ── */
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 0;
 }
-.split-img { overflow: hidden; min-height: 460px; }
+.split-img { overflow: hidden; min-height: 480px; }
 .split-img img { width: 100%; height: 100%; object-fit: cover; }
 .split-text { padding: 4rem 6vw; }
-.split-text h2 { font-size: clamp(2rem, 2.8vw, 2.6rem); line-height: 1.15; margin-bottom: 1.2rem; }
+.split-text h2 { font-size: clamp(2rem,2.8vw,2.6rem); line-height: 1.15; margin-bottom: 1.2rem; }
 .split-text h2 em { font-style: italic; color: var(--rouge); }
-.split-text p { font-size: 0.88rem; opacity: 0.65; margin-bottom: 2rem; max-width: 400px; line-height: 1.8; }
+.split-text > p { font-size: 0.88rem; opacity: 0.65; margin-bottom: 2rem; max-width: 400px; line-height: 1.8; }
 .steps { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.2rem; }
 .step { display: flex; gap: 1rem; align-items: flex-start; }
 .step-num {
@@ -340,10 +242,10 @@ section { padding: 6rem 8vw; }
   gap: 6rem;
   align-items: center;
 }
-.ingredients h2 { font-size: clamp(2rem, 2.8vw, 2.6rem); line-height: 1.15; margin-bottom: 1.2rem; }
+.ingredients h2 { font-size: clamp(2rem,2.8vw,2.6rem); line-height: 1.15; margin-bottom: 1.2rem; }
 .ingredients h2 em { font-style: italic; color: var(--rouge); }
-.ingredients p { font-size: 0.88rem; opacity: 0.65; margin-bottom: 2rem; line-height: 1.8; }
-.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2.5rem; }
+.ingredients > div > p { font-size: 0.88rem; opacity: 0.65; margin-bottom: 2rem; line-height: 1.8; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0; }
 .tag {
   font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 0.45rem 1rem; border: 1px solid var(--line); color: var(--brun); opacity: 0.8;
@@ -355,11 +257,11 @@ section { padding: 6rem 8vw; }
 
 /* ── TESTIMONIALS ── */
 .testi { background: #F2EDE5; text-align: center; }
-.testi h2 { font-size: clamp(1.8rem, 2.8vw, 2.4rem); margin-bottom: 0.4rem; }
+.testi h2 { font-size: clamp(1.8rem,2.8vw,2.4rem); margin-bottom: 0.4rem; }
 .testi-sub { font-size: 0.75rem; color: var(--gris); margin-bottom: 3.5rem; }
-.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; text-align: left; }
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; text-align: left; }
 .card { background: white; padding: 2rem; }
-.card .stars { margin-bottom: 0.8rem; }
+.card .stars { color: var(--or); font-size: 0.82rem; letter-spacing: 0.12em; margin-bottom: 0.8rem; }
 .card q {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
@@ -372,7 +274,7 @@ section { padding: 6rem 8vw; }
 .card small { display: block; font-size: 0.66rem; color: var(--gris); margin-top: 0.1rem; }
 
 /* ── GUARANTEE ── */
-.guarantee { text-align: center; background: var(--creme); }
+.guarantee { text-align: center; }
 .guarantee-badge {
   display: inline-flex;
   flex-direction: column;
@@ -389,7 +291,7 @@ section { padding: 6rem 8vw; }
 
 /* ── FAQ ── */
 .faq { max-width: 760px; margin: 0 auto; }
-.faq h2 { text-align: center; font-size: clamp(1.8rem, 2.8vw, 2.4rem); margin-bottom: 3rem; }
+.faq h2 { text-align: center; font-size: clamp(1.8rem,2.8vw,2.4rem); margin-bottom: 3rem; }
 .faq details { border-bottom: 1px solid var(--line); }
 .faq summary {
   list-style: none; cursor: pointer;
@@ -401,32 +303,89 @@ section { padding: 6rem 8vw; }
 .faq details[open] summary::after { transform: rotate(45deg); }
 .faq p { font-size: 0.84rem; opacity: 0.68; line-height: 1.8; padding: 0 0 1.4rem; }
 
-/* ── CTA FINAL ── */
-.cta-final {
-  background: var(--rouge);
-  text-align: center;
-  color: var(--creme);
-  padding: 7rem 8vw;
+/* ── PRODUCT / ORDER SECTION ── */
+.order-section {
+  background: #F2EDE5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 0;
 }
-.cta-final .eyebrow { color: rgba(250,247,242,0.5); }
-.cta-final h2 { font-size: clamp(2.4rem, 4vw, 3.6rem); line-height: 1.1; margin-bottom: 1rem; }
-.cta-final h2 em { font-style: italic; color: var(--or); }
-.cta-final p { font-size: 0.85rem; color: rgba(250,247,242,0.7); margin-bottom: 1.5rem; }
-.btn-cream {
-  display: inline-block;
-  padding: 1rem 3rem;
-  background: var(--creme);
-  color: var(--rouge);
+.order-img { overflow: hidden; min-height: 540px; }
+.order-img img { width: 100%; height: 100%; object-fit: cover; }
+.order-content {
+  padding: 4.5rem 5vw;
+  display: flex;
+  flex-direction: column;
+}
+.order-content h2 { font-size: clamp(1.8rem,2.5vw,2.4rem); line-height: 1.15; margin-bottom: 0.4rem; }
+.order-content h2 em { font-style: italic; color: var(--rouge); }
+.order-tagline { font-size: 0.82rem; opacity: 0.6; margin-bottom: 2rem; }
+
+.variant-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gris);
+  margin-bottom: 0.7rem;
+}
+.variants { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+.variant-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.2rem;
+  border: 1.5px solid var(--line);
+  background: white;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+  width: 100%;
+}
+.variant-btn.active { border-color: var(--rouge); background: rgba(139,28,28,0.04); }
+.variant-btn:hover { border-color: var(--rouge); }
+.variant-left { text-align: left; }
+.variant-name { font-size: 0.8rem; font-weight: 500; color: var(--brun); }
+.variant-badge {
+  font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--or); color: white;
+  padding: 0.18rem 0.55rem; margin-left: 0.5rem;
+}
+.variant-per { font-size: 0.63rem; color: var(--gris); margin-top: 0.15rem; }
+.variant-price { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--rouge); white-space: nowrap; }
+
+.btn-primary {
+  display: block;
+  width: 100%;
+  padding: 1.1rem;
+  background: var(--rouge);
+  color: var(--creme);
+  text-align: center;
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
+  border: none;
+  cursor: pointer;
   transition: background .25s, transform .2s;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
-.btn-cream:hover { background: var(--brun); color: var(--creme); transform: translateY(-2px); }
-.cta-final small { display: block; font-size: 0.66rem; color: rgba(250,247,242,0.4); letter-spacing: 0.06em; }
+.btn-primary:hover { background: var(--brun); transform: translateY(-1px); }
+
+.order-trust {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+.order-trust span {
+  font-size: 0.63rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gris);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
 
 /* ── STICKY BOTTOM BAR (mobile) ── */
 .sticky-bar {
@@ -460,107 +419,68 @@ section { padding: 6rem 8vw; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 989px) {
-  .hero-product { grid-template-columns: 1fr; }
-  .hero-img { min-height: 360px; }
+  .hero-brand-overlay h1 { font-size: 2.4rem; }
   .split { grid-template-columns: 1fr; }
   .split-img { min-height: 300px; }
   .ingredients { grid-template-columns: 1fr; gap: 3rem; }
-  .benefits-grid { grid-template-columns: 1fr; }
+  .benefits-grid { grid-template-columns: 1fr 1fr; }
   .testi-grid { grid-template-columns: 1fr; }
+  .order-section { grid-template-columns: 1fr; }
+  .order-img { min-height: 300px; }
   section { padding: 4.5rem 6vw; }
   .sticky-bar { display: flex; }
 }
 @media (max-width: 749px) {
   .trust-bar { gap: 1rem 1.8rem; padding: 1.2rem 6vw; }
   .split-text { padding: 3rem 6vw; }
+  .benefits-grid { grid-template-columns: 1fr; }
   .guarantee-badge { padding: 2rem 1.5rem; }
+  .hero-brand-overlay h1 { font-size: 2rem; }
+  .order-content { padding: 3rem 6vw; }
 }
 </style>
 </head>
 <body>
 
-<!-- ANNOUNCE BAR -->
+<!-- 1. ANNOUNCE BAR -->
 <div class="announce">
   🌿 Free shipping on orders over AED 150 &nbsp;·&nbsp; Natural beauty from within &nbsp;·&nbsp; UAE Delivery 3–7 days
 </div>
 
-<!-- STICKY HEADER -->
+<!-- 2. STICKY HEADER -->
 <header class="site-header">
   <a href="#" class="site-logo">Red Ginseng Co.</a>
-  <a href="#" class="header-cart">
-    <span class="cart-icon">🛍</span>
-    <span>Cart</span>
-    <span class="cart-count">0</span>
-  </a>
+  <a href="#order" class="header-cta">Order Now →</a>
 </header>
 
-<!-- SOCIAL PROOF TICKER -->
+<!-- 3. SOCIAL PROOF TICKER -->
 <div class="ticker">
   <div class="ticker-inner">
     <span>⭐ Nadia K. — Dubai · "My skin feels firmer within 3 weeks"</span>
     <span>⭐ Sara B. — Abu Dhabi · "Complexion is brighter and more even"</span>
     <span>⭐ Layla M. — Sharjah · "Fatigue is gone, genuinely impressive"</span>
     <span>✓ Korean Certified Quality</span>
-    <span>✓ 200+ orders</span>
+    <span>✓ Delivered across the UAE</span>
     <span>⭐ Nadia K. — Dubai · "My skin feels firmer within 3 weeks"</span>
     <span>⭐ Sara B. — Abu Dhabi · "Complexion is brighter and more even"</span>
     <span>⭐ Layla M. — Sharjah · "Fatigue is gone, genuinely impressive"</span>
     <span>✓ Korean Certified Quality</span>
-    <span>✓ 200+ orders</span>
+    <span>✓ Delivered across the UAE</span>
   </div>
 </div>
 
-<!-- HERO PRODUCT -->
-<div class="hero-product">
-  <div class="hero-img">
-    <div class="hero-badge">New Launch</div>
-    <img src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/English_2.png?width=900" alt="Red Ginseng Collagen Jelly">
-  </div>
-  <div class="hero-content">
-    <div class="hero-rating">
-      <span class="stars">★★★★★</span>
-      <span class="rating-text">4.9 / 5 &nbsp;·&nbsp; 200+ customers</span>
-    </div>
+<!-- 4. HERO BRAND (image pleine largeur, pas de bouton d'achat) -->
+<div class="hero-brand">
+  <img src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/English_2.png?width=1600" alt="Red Ginseng Collagen Jelly">
+  <div class="hero-brand-overlay">
     <div class="eyebrow">Korean Beauty Ritual</div>
-    <h1 class="serif">Red Ginseng<br>Collagen Jelly <em>Stick</em></h1>
-    <p class="hero-tagline">Pomegranate · Red Ginseng · Marine Collagen — one stick a day for firmer skin and lasting energy.</p>
-
-    <div class="variant-label">Choose your pack</div>
-    <div class="variants">
-      <button class="variant-btn active" data-price="AED 149">
-        <div>
-          <div class="variant-name">1 Box — 30 sticks</div>
-          <div class="variant-per">1 month supply</div>
-        </div>
-        <span class="variant-price">AED 149</span>
-      </button>
-      <button class="variant-btn" data-price="AED 269">
-        <div>
-          <div class="variant-name">2 Boxes — 60 sticks <span class="variant-badge">Popular</span></div>
-          <div class="variant-per">2 month supply · AED 134/box</div>
-        </div>
-        <span class="variant-price">AED 269</span>
-      </button>
-      <button class="variant-btn" data-price="AED 379">
-        <div>
-          <div class="variant-name">3 Boxes — 90 sticks <span class="variant-badge">Best Value</span></div>
-          <div class="variant-per">3 month supply · AED 126/box</div>
-        </div>
-        <span class="variant-price">AED 379</span>
-      </button>
-    </div>
-
-    <a href="#" class="btn-primary">Order Now →</a>
-
-    <div class="hero-trust">
-      <span>🔒 Secure Payment</span>
-      <span>🚚 UAE Delivery 3–7 days</span>
-      <span>🇰🇷 Korean Certified</span>
-    </div>
+    <h1 class="serif">Your daily glow,<br><em>from within</em></h1>
+    <p>Pomegranate · Red Ginseng · Marine Collagen<br>30 sticks · 1 stick a day · Feel the difference</p>
+    <a href="#benefits" class="hero-scroll-cta">Discover the ritual ↓</a>
   </div>
 </div>
 
-<!-- TRUST BAR -->
+<!-- 5. TRUST BAR -->
 <div class="trust-bar">
   <span>✓ Korean Certified Quality</span>
   <span>✓ 30 sticks · 1 month supply</span>
@@ -569,11 +489,12 @@ section { padding: 6rem 8vw; }
   <span>✓ Secure Payment</span>
 </div>
 
-<!-- BENEFITS -->
-<section style="background: var(--creme);">
-  <div style="text-align:center; max-width: 560px; margin: 0 auto 0;">
+<!-- 6. BENEFITS -->
+<section id="benefits" style="background: var(--creme);">
+  <div class="section-header">
     <div class="eyebrow">Why It Works</div>
-    <h2 class="serif" style="font-size: clamp(2rem,3vw,2.6rem); line-height:1.15;">6 benefits in <em style="font-style:italic; color:var(--rouge);">one daily stick</em></h2>
+    <h2 class="serif">6 benefits in <em>one daily stick</em></h2>
+    <p>A single 20g sachet of Red Ginseng Collagen Jelly delivers a complete beauty and wellness ritual — in 30 seconds.</p>
   </div>
   <div class="benefits-grid">
     <div class="benefit-card">
@@ -609,7 +530,7 @@ section { padding: 6rem 8vw; }
   </div>
 </section>
 
-<!-- SPLIT — DAILY RITUAL -->
+<!-- 7. DAILY RITUAL (how it works) -->
 <div class="split" style="background: #F2EDE5;">
   <div class="split-img">
     <img src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/Gemini_Generated_Image__3_8cac6d72-9c14-49bb-b8e6-39c1ce31bcde.png?width=900" alt="Collagen jelly texture">
@@ -641,12 +562,16 @@ section { padding: 6rem 8vw; }
         </div>
       </div>
     </div>
-    <a href="#" style="display:inline-block; padding: 1rem 2.4rem; border: 1px solid var(--brun); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; color:var(--brun); transition: background .2s, color .2s;" onmouseover="this.style.background='var(--brun)';this.style.color='var(--creme)'" onmouseout="this.style.background='transparent';this.style.color='var(--brun)'">Shop Now →</a>
   </div>
 </div>
 
-<!-- INGREDIENTS -->
-<section>
+<!-- 8. BANNER IMAGE (benefits visuel) -->
+<div style="overflow:hidden; line-height:0;">
+  <img src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/English.png?width=2000" alt="6 key benefits" style="width:100%; height:auto; display:block;">
+</div>
+
+<!-- 9. INGREDIENTS -->
+<section style="background: var(--creme);">
   <div class="ingredients">
     <div>
       <div class="eyebrow">Key Ingredients</div>
@@ -659,7 +584,6 @@ section { padding: 6rem 8vw; }
         <span class="tag">No Added Sugar</span>
         <span class="tag">No Preservatives</span>
       </div>
-      <a href="#" style="display:inline-block; padding: 1rem 2.6rem; background:var(--rouge); color:var(--creme); font-size:0.72rem; font-weight:500; letter-spacing:0.16em; text-transform:uppercase; text-decoration:none;">View Product →</a>
     </div>
     <div class="stats-grid">
       <div class="stat"><b>6</b><span>Years grown</span></div>
@@ -670,12 +594,7 @@ section { padding: 6rem 8vw; }
   </div>
 </section>
 
-<!-- BANNER IMAGE -->
-<div style="overflow:hidden; line-height:0;">
-  <img src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/English.png?width=2000" alt="6 key benefits" style="width:100%; height:auto; display:block;">
-</div>
-
-<!-- TESTIMONIALS -->
+<!-- 10. TESTIMONIALS -->
 <section class="testi">
   <div class="eyebrow" style="display:inline-block;">Customer Reviews</div>
   <h2 class="serif">They tried it. They loved it.</h2>
@@ -699,17 +618,17 @@ section { padding: 6rem 8vw; }
   </div>
 </section>
 
-<!-- GUARANTEE -->
-<section class="guarantee">
+<!-- 11. GUARANTEE -->
+<section class="guarantee" style="background: var(--creme);">
   <div class="eyebrow" style="display:inline-block; margin-bottom:2rem;">Our Promise</div>
   <div class="guarantee-badge">
     <span class="big-icon">🛡️</span>
     <h3 class="serif">Satisfaction Guaranteed</h3>
-    <p>If you're not fully satisfied after 30 days, contact us and we'll make it right. We stand behind every box we ship.</p>
+    <p>If you're not fully satisfied after 30 days, contact us and we'll make it right. We stand behind every box we ship to the UAE.</p>
   </div>
 </section>
 
-<!-- FAQ -->
+<!-- 12. FAQ -->
 <section style="background: #F2EDE5;">
   <div class="faq">
     <h2 class="serif">Frequently Asked Questions</h2>
@@ -736,38 +655,71 @@ section { padding: 6rem 8vw; }
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="cta-final">
-  <div class="eyebrow">Start Today</div>
-  <h2 class="serif">Reveal your <em>natural</em> radiance</h2>
-  <p>30 sticks · 1 month beauty ritual · Red Ginseng × Collagen × Pomegranate</p>
-  <a href="#" class="btn-cream">Order My Box →</a>
-  <small>🔒 Secure Payment · Korean Certified Quality · UAE Delivery</small>
-</section>
+<!-- 13. PRODUCT / ORDER (la vente, à la fin) -->
+<div id="order" class="order-section">
+  <div class="order-img">
+    <img src="https://cdn.shopify.com/s/files/1/0782/4159/5618/files/English_2.png?width=900" alt="Red Ginseng Collagen Jelly">
+  </div>
+  <div class="order-content">
+    <div class="eyebrow">Start Your Ritual</div>
+    <h2 class="serif">Red Ginseng<br>Collagen Jelly <em>Stick</em></h2>
+    <p class="order-tagline">Pomegranate · Red Ginseng · Marine Collagen</p>
 
-<!-- STICKY BOTTOM BAR (mobile only) -->
-<div class="sticky-bar" id="stickyBar">
+    <div class="variant-label">Choose your pack</div>
+    <div class="variants">
+      <button class="variant-btn active" data-price="AED 149" data-label="1 Box — 30 sticks">
+        <div class="variant-left">
+          <div class="variant-name">1 Box — 30 sticks</div>
+          <div class="variant-per">1 month supply</div>
+        </div>
+        <span class="variant-price">AED 149</span>
+      </button>
+      <button class="variant-btn" data-price="AED 269" data-label="2 Boxes — 60 sticks">
+        <div class="variant-left">
+          <div class="variant-name">2 Boxes — 60 sticks <span class="variant-badge">Popular</span></div>
+          <div class="variant-per">2 month supply · AED 134/box</div>
+        </div>
+        <span class="variant-price">AED 269</span>
+      </button>
+      <button class="variant-btn" data-price="AED 379" data-label="3 Boxes — 90 sticks">
+        <div class="variant-left">
+          <div class="variant-name">3 Boxes — 90 sticks <span class="variant-badge">Best Value</span></div>
+          <div class="variant-per">3 month supply · AED 126/box</div>
+        </div>
+        <span class="variant-price">AED 379</span>
+      </button>
+    </div>
+
+    <a href="#" class="btn-primary">Order Now →</a>
+
+    <div class="order-trust">
+      <span>🔒 Secure Payment</span>
+      <span>🚚 UAE Delivery 3–7 days</span>
+      <span>🇰🇷 Korean Certified</span>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY BOTTOM BAR (mobile) -->
+<div class="sticky-bar" id="stickyBar" style="display:none;">
   <div class="sticky-bar-info">
     <strong id="stickyPrice">AED 149</strong>
-    <span>1 Box — 30 sticks</span>
+    <span id="stickyLabel">1 Box — 30 sticks</span>
   </div>
-  <a href="#">Order Now →</a>
+  <a href="#order">Order Now →</a>
 </div>
 
 <script>
 // Variant picker
 const btns = document.querySelectorAll('.variant-btn');
-const stickyPrice = document.getElementById('stickyPrice');
-const variantNames = ['1 Box — 30 sticks', '2 Boxes — 60 sticks', '3 Boxes — 90 sticks'];
-
-btns.forEach((btn, i) => {
+btns.forEach(btn => {
   btn.addEventListener('click', () => {
     btns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    if (stickyPrice) {
-      stickyPrice.textContent = btn.dataset.price;
-      stickyPrice.nextElementSibling.textContent = variantNames[i];
-    }
+    const p = document.getElementById('stickyPrice');
+    const l = document.getElementById('stickyLabel');
+    if (p) p.textContent = btn.dataset.price;
+    if (l) l.textContent = btn.dataset.label;
   });
 });
 
@@ -778,12 +730,22 @@ document.querySelectorAll('.faq details').forEach(d => {
   });
 });
 
-// Hide sticky bar on desktop (already CSS), show after scroll on mobile
-const heroHeight = document.querySelector('.hero-product')?.offsetHeight || 400;
+// Sticky bar — appears after hero on mobile
+const heroEl = document.querySelector('.hero-brand');
 window.addEventListener('scroll', () => {
   const bar = document.getElementById('stickyBar');
-  if (bar) bar.style.display = window.scrollY > heroHeight ? 'flex' : 'none';
+  if (!bar) return;
+  const threshold = heroEl ? heroEl.offsetHeight : 400;
+  bar.style.display = (window.innerWidth <= 989 && window.scrollY > threshold) ? 'flex' : 'none';
 }, { passive: true });
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
 </script>
 </body>
 </html>
